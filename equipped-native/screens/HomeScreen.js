@@ -1,15 +1,69 @@
 import React from 'react';
-import { ScrollView, StyleSheet, View, Linking, Alert, TouchableOpacity } from 'react-native';
+import { ScrollView, StyleSheet, View, Linking, Alert, TouchableOpacity, Image, FlatList, Dimensions } from 'react-native';
 import { Card, Text, Button, FormLabel, FormInput, Icon, Avatar, Divider, List, ListItem } from 'react-native-elements';
-import { WebBrowser } from 'expo';
+import {CardList} from '../components/cardList';
 import {NavBar} from '../components/NavBar';
+import Guitar from '../assets/images/guitar.jpg';
+import fav from '../assets/images/fav.jpg';
+import settings from '../assets/images/settings.png';
 
 import { MonoText } from '../components/StyledText';
 
+const {height, width} = Dimensions.get('window');
+const itemWidth = (width - 15) / 2;
+
+const menuList = [
+    {   title: 'Search Albums',
+        subTitle: 'Search your favorite music',
+        icon: 'music',
+        navigateTo: 'AlbumScreen',
+        image: Guitar,
+        fontColor: '#000'
+    },
+    {   title: 'Favorite Collections',
+        subTitle: 'Access your favorite albums',
+        icon: 'play',
+        navigateTo: 'FavoritesScreen',
+        image: fav,
+        fontColor: '#fff',
+    },
+    {   title: 'Settings',
+        subTitle: 'Customize your App',
+        icon: 'info',
+        navigateTo: 'SettingsScreen',
+        image: settings,
+        fontColor: '#fff'
+    },
+    {   title: 'Favorite Collections',
+        subTitle: 'Access your favorite albums',
+        icon: 'play',
+        navigateTo: 'FavoritesScreen',
+        image: fav,
+        fontColor: '#fff',
+    },
+    {   title: 'Search Albums',
+        subTitle: 'Search your favorite music',
+        icon: 'music',
+        navigateTo: 'AlbumScreen',
+        image: Guitar,
+        fontColor: '#000'
+    }
+];
+
 export default class HomeScreen extends React.Component {
+
     static navigationOptions = {
         header: null,
     };
+
+    constructor() {
+        super();
+        this.state = {
+            itemWidth: itemWidth,
+            items: menuList,
+            isFetching: false
+        };
+    }
 
     render() {
         return (
@@ -28,6 +82,11 @@ export default class HomeScreen extends React.Component {
                           color='#f58'
                           size={30}/>
                 </View>
+                    <CardList data={this.state.items}
+                    />
+
+
+
               <Text> Hello world</Text>
             </View>
         );
@@ -40,6 +99,10 @@ export default class HomeScreen extends React.Component {
           },
       topNav: {
           flexDirection: 'row',
-          justifyContent: 'space-between'
-      }
+          justifyContent: 'center'
+      },
+      backgroundImage: {
+          backgroundColor: '#000',
+          opacity: 100
+      },
       });

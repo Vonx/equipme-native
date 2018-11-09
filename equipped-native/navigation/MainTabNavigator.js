@@ -28,7 +28,7 @@ HomeStack.navigationOptions = {
 };
 
 const LendStack = createStackNavigator({
-    Lend: LendScreen,
+    LendScreen: LendScreen,
 });
 
 LendStack.navigationOptions = {
