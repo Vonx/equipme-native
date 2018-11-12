@@ -1,10 +1,7 @@
 import React from 'react';
 import {Text, View, StyleSheet, FlatList, Image} from 'react-native';
 import { Card, Button, List, SearchBar} from 'react-native-elements';
-import { Bubbles, DoubleBounce, Bars, Pulse } from 'react-native-loader';
-
-const height = 50;
-const width = 50;
+import { Bars } from 'react-native-loader';
 
 export class CardList extends React.Component {
 
@@ -43,7 +40,6 @@ export class CardList extends React.Component {
                 <Bars size={20} color="#000000" />
             </View>
         }
-
     }
 }
 

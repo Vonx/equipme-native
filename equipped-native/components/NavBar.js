@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import {Button, Icon, Avatar } from 'react-native-elements';
+import { withNavigation } from 'react-navigation';
 
-export class NavBar extends React.Component {
+class NavBar extends React.Component {
     render() {
 
         const {screen} = this.props.screen;
@@ -14,7 +15,7 @@ export class NavBar extends React.Component {
                       type='font-awesome'
                       color='#f58'
                       size={30}/>
-                <Icon onPress={screen}
+                <Icon onPress={() => {{this.props.navigation.navigate('LendScreen')}}}
                       raised
                       name='info'
                       type='font-awesome'
@@ -24,6 +25,7 @@ export class NavBar extends React.Component {
         );
     }
 }
+export default withNavigation(NavBar);
 
 const styles = StyleSheet.create({
     container: {
@@ -33,6 +35,6 @@ const styles = StyleSheet.create({
     },
     topNav: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
-    }
+        justifyContent: 'center'
+    },
 });
